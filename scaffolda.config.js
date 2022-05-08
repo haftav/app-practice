@@ -1,20 +1,20 @@
-const { collectProps, scaffolda } = require("scaffolda");
+const { collectProps, scaffolda } = require('scaffolda');
 
-const componentFolder = require("./templates/component");
+const componentFolder = require('./templates/component');
 
-const commands = [{ title: "Component", value: "component" }];
+const commands = [{ title: 'Component', value: 'component' }];
 
 async function handleCommand(command) {
-  if (command === "component") {
+  if (command === 'component') {
     const props = await collectProps(() => [
       {
-        type: "text",
-        name: "name",
-        message: "What is the name of your component?",
+        type: 'text',
+        name: 'name',
+        message: 'What is the name of your component?',
       },
     ]);
 
-    scaffolda("./src/components", props, componentFolder);
+    scaffolda('./src/components', props, componentFolder);
   }
 }
 
