@@ -3,7 +3,11 @@ import Head from 'next/head';
 import { useSession, signIn, signOut } from 'next-auth/react';
 
 const Main: NextPage = () => {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+
+  if (status === 'loading') {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
@@ -15,7 +19,14 @@ const Main: NextPage = () => {
 
       <main className="text-center">
         <h1>Hello World</h1>
-        {session ? 'Logged in' : <button onClick={() => signIn()}>Log In</button>}
+        {session ? (
+          <div>
+            <p>Logged in as {session?.user.username} </p>
+            <button onClick={() => signOut()}>Log Out</button>
+          </div>
+        ) : (
+          <button onClick={() => signIn()}>Log In</button>
+        )}
       </main>
     </div>
   );
