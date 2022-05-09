@@ -1,8 +1,12 @@
 const { collectProps, scaffolda } = require('scaffolda');
 
-const componentFolder = require('./templates/component');
+const component = require('./templates/component');
+const page = require('./templates/page');
 
-const commands = [{ title: 'Component', value: 'component' }];
+const commands = [
+  { title: 'Component', value: 'component' },
+  { title: 'Page', value: 'page' },
+];
 
 async function handleCommand(command) {
   if (command === 'component') {
@@ -14,7 +18,24 @@ async function handleCommand(command) {
       },
     ]);
 
-    scaffolda('./src/components', props, componentFolder);
+    scaffolda('./src/components', props, component);
+  }
+
+  if (command === 'page') {
+    const props = await collectProps(() => [
+      {
+        type: 'text',
+        name: 'name',
+        message: 'What is the name of your page?',
+      },
+      {
+        type: 'confirm',
+        name: 'isProtected',
+        message: 'Is this a protected route?',
+      },
+    ]);
+
+    scaffolda('./src/pages', props, page);
   }
 }
 

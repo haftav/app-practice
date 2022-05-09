@@ -1,8 +1,5 @@
 const { createFile, createFolder } = require('scaffolda');
-
-function toUpperCamelCase(str) {
-  return str[0].toUpperCase() + str.slice(1);
-}
+const { toUpperCamelCase } = require('./utils');
 
 const component = createFile(
   ({ name }) => `
