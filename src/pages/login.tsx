@@ -1,11 +1,12 @@
 import type { NextPage } from 'next';
 import { signIn } from 'next-auth/react';
 
+import LoginBox from '../components/LoginBox';
+
 const Login: NextPage = () => {
   return (
-    <div>
-      <h1>Login or sign up</h1>
-      <button onClick={() => signIn('github', { callbackUrl: '/' })}>Sign In</button>
+    <div className="container h-screen">
+      <LoginBox />
     </div>
   );
 };

@@ -13,4 +13,12 @@ export default ${toUpperCamelCase(name)};
   ({ name }) => `${toUpperCamelCase(name)}.tsx`
 );
 
-module.exports = createFolder([component], ({ name }) => toUpperCamelCase(name));
+const index = createFile(
+  ({ name }) => `
+export * from './${toUpperCamelCase(name)}';
+export { default } from './${toUpperCamelCase(name)}';
+`,
+  'index.ts'
+);
+
+module.exports = createFolder([component, index], ({ name }) => toUpperCamelCase(name));
