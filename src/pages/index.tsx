@@ -1,9 +1,11 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import { signOut } from 'next-auth/react';
 
-import withAuth from '../components/withAuth';
 import { ProtectedPage } from '../models';
 import MainLayout from '../layouts/MainLayout';
+import withAuth from '../components/withAuth';
+import Button from '../components/Button';
 
 const Dashboard: ProtectedPage = ({ session }) => {
   return (
@@ -21,7 +23,17 @@ const Dashboard: ProtectedPage = ({ session }) => {
         <h1>Hello World</h1>
         <div>
           <p>Logged in as {session.user.username} </p>
-          <button onClick={() => signOut()}>Log Out</button>
+          <Image
+            className="rounded-full"
+            src={session.user.image as string}
+            alt={session.user.username as string}
+            width={150}
+            height={150}
+          />
+
+          <Button variant="primary" onClick={() => signOut()}>
+            Log Out
+          </Button>
         </div>
       </main>
     </MainLayout>
