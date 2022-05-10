@@ -1,6 +1,14 @@
 import type { ReactNode } from 'react';
 
-import Header from '../components/Header';
+import Header, {
+  HeaderLeft,
+  Logo,
+  Links,
+  Logout,
+  HeaderRight,
+  HeaderCenter,
+} from '../components/Header';
+import ToggleTheme from '../components/ToggleTheme';
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -9,7 +17,18 @@ interface MainLayoutProps {
 const MainLayout = ({ children }: MainLayoutProps) => {
   return (
     <div>
-      <Header>hi</Header>
+      <Header>
+        <HeaderLeft>
+          <Logo />
+          <Links />
+        </HeaderLeft>
+        <HeaderCenter>
+          <ToggleTheme />
+        </HeaderCenter>
+        <HeaderRight>
+          <Logout />
+        </HeaderRight>
+      </Header>
       {children}
     </div>
   );
