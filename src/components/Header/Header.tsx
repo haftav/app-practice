@@ -17,7 +17,12 @@ const Link = ({ href, children }: LinkProps) => {
 
   return (
     <NextLink href={href}>
-      <a className={clsx('first:ml-0 ml-5', pathname === href ? 'border-b border-gray-200' : '')}>
+      <a
+        className={clsx(
+          'first:ml-0 ml-5',
+          pathname === href ? 'border-b border-gray-700 dark:border-gray-200' : ''
+        )}
+      >
         {children}
       </a>
     </NextLink>

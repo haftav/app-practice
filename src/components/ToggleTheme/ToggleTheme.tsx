@@ -1,4 +1,4 @@
-import { BsMoonStars } from 'react-icons/bs';
+import { BsMoon, BsSun } from 'react-icons/bs';
 
 import useTheme from '../../hooks/useTheme';
 
@@ -7,10 +7,9 @@ interface ToggleThemeProps {}
 const ToggleTheme = () => {
   const [theme, toggle] = useTheme();
 
-  console.log(theme);
   return (
     <button onClick={toggle}>
-      <BsMoonStars />
+      {theme === 'light' ? <BsMoon size={20} /> : <BsSun size={20} />}
     </button>
   );
 };
