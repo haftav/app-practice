@@ -1,11 +1,9 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { signOut } from 'next-auth/react';
 
 import { ProtectedPage } from '../models';
 import MainLayout from '../layouts/MainLayout';
 import withAuth from '../components/withAuth';
-import Button from '../components/Button';
 
 const Dashboard: ProtectedPage = ({ session }) => {
   return (
@@ -23,13 +21,6 @@ const Dashboard: ProtectedPage = ({ session }) => {
         <h1>Hello World</h1>
         <div>
           <p>Logged in as {session.user.username} </p>
-          <Image
-            className="rounded-full"
-            src={session.user.image as string}
-            alt={session.user.username as string}
-            width={150}
-            height={150}
-          />
         </div>
       </main>
     </MainLayout>
