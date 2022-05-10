@@ -3,6 +3,8 @@ const { toUpperCamelCase } = require('./utils');
 
 const component = createFile(
   ({ name }) => `
+interface ${toUpperCamelCase(name)}Props {}
+
 const ${toUpperCamelCase(name)} = () => {
   return <div></div>;
 };

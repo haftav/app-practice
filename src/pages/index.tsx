@@ -30,10 +30,6 @@ const Dashboard: ProtectedPage = ({ session }) => {
             width={150}
             height={150}
           />
-
-          <Button variant="primary" onClick={() => signOut()}>
-            Log Out
-          </Button>
         </div>
       </main>
     </MainLayout>
