@@ -1,5 +1,4 @@
 import type { NextPage } from 'next';
-import { signIn } from 'next-auth/react';
 
 import LoginBox from '../components/LoginBox';
 
