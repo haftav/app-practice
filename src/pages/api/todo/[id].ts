@@ -54,7 +54,7 @@ async function getRequest({ req, res, session }: RequestHandler) {
 async function putRequest({ req, res, session }: RequestHandler) {
   const id = getId(req);
 
-  const data: { name?: string; description?: string } = {};
+  const data: { name?: string; description?: string; completed?: boolean } = {};
 
   if (req.body.name) {
     data.name = req.body.name;
@@ -62,6 +62,10 @@ async function putRequest({ req, res, session }: RequestHandler) {
 
   if (req.body.description) {
     data.description = req.body.description;
+  }
+
+  if (req.body.completed) {
+    data.completed = req.body.completed;
   }
 
   const todo = await prisma.todo.update({
