@@ -14,3 +14,9 @@ export interface RequestHandler {
   res: NextApiResponse;
   session: Session;
 }
+
+export interface ApiResponse<T = any, K = string> {
+  data: {
+    [K: string]: T;
+  };
+}

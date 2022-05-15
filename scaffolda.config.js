@@ -2,6 +2,7 @@ const { collectProps, scaffolda } = require('scaffolda');
 
 const component = require('./templates/component');
 const page = require('./templates/page');
+const query = require('./templates/query');
 
 const commands = [
   { title: 'Component', value: 'component' },
@@ -36,6 +37,18 @@ async function handleCommand(command) {
     ]);
 
     scaffolda('./src/pages', props, page);
+  }
+
+  if (command === 'query') {
+    const props = await collectProps(() => [
+      {
+        type: 'text',
+        name: 'name',
+        message: 'What is the name of your query?',
+      },
+    ]);
+
+    scaffolda('./src/query', props, query);
   }
 }
 

@@ -1,6 +1,3 @@
-import Head from 'next/head';
-import Image from 'next/image';
-
 import { ProtectedPage } from '../models';
 import MainLayout from '../layouts/MainLayout';
 import withAuth from '../components/withAuth';
