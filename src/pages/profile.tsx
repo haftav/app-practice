@@ -1,7 +1,9 @@
 import Image from 'next/image';
 
-import withAuth from '../components/withAuth';
 import MainLayout from '../layouts/MainLayout';
+
+import withAuth from '../components/withAuth';
+import Todo from '../components/Todo';
 
 import { ProtectedPage } from '../models';
 
@@ -12,13 +14,11 @@ const Todos = () => {
 
   if (todos.data) {
     return todos.data.length ? (
-      <div>
+      <>
         {todos.data.map((todo) => (
-          <div key={todo.id}>
-            <pre>{JSON.stringify(todo, null, 2)}</pre>
-          </div>
+          <Todo todo={todo} key={todo.id} />
         ))}
-      </div>
+      </>
     ) : (
       <div>No todos.</div>
     );
@@ -34,7 +34,7 @@ const Todos = () => {
 const Profile: ProtectedPage = ({ session }) => {
   return (
     <MainLayout>
-      <div className="container m-auto flex flex-col items-center">
+      <div className="container m-auto px-12 md:px-24 lg:px-64 flex flex-col items-center">
         <p>Logged in as {session.user.username} </p>
         <Image
           className="rounded-full"
