@@ -15,8 +15,8 @@ export interface RequestHandler {
   session: Session;
 }
 
-export interface ApiResponse<T = any, K = string> {
+export interface ApiResponse<PropertyName extends string, DataType> {
   data: {
-    [K: string]: T;
+    [K in PropertyName]: DataType;
   };
 }

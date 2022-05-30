@@ -16,7 +16,7 @@ const Todos = () => {
     return todos.data.length ? (
       <>
         {todos.data.map((todo) => (
-          <Todo todo={todo} key={todo.id} />
+          <Todo todo={todo} toggle={(checked) => {}} key={todo.id} />
         ))}
       </>
     ) : (
