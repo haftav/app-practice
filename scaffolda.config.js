@@ -7,6 +7,7 @@ const query = require('./templates/query');
 const commands = [
   { title: 'Component', value: 'component' },
   { title: 'Page', value: 'page' },
+  { title: 'Query', value: 'query' },
 ];
 
 async function handleCommand(command) {

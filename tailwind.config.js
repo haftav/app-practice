@@ -3,6 +3,6 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require('tailwindcss-radix')()],
   darkMode: 'class',
 };
