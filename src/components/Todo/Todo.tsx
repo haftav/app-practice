@@ -4,7 +4,7 @@ import Checkbox from '../Checkbox';
 
 interface TodoProps {
   todo: Todo;
-  toggle?: (checked: boolean | 'indeterminate') => void;
+  toggle?: (checked: boolean) => void;
 }
 
 const Todo = ({ todo, toggle }: TodoProps) => {
@@ -14,8 +14,10 @@ const Todo = ({ todo, toggle }: TodoProps) => {
         <Checkbox
           checked={todo.completed}
           onCheckedChange={(checked) => {
+            console.log('here');
+
             if (toggle) {
-              toggle(checked);
+              toggle(!!checked); // casting to boolean since this should never be 'indeterminate'
             }
           }}
         />

@@ -51,20 +51,25 @@ async function getRequest({ req, res, session }: RequestHandler) {
   });
 }
 
+function isUndefined(x) {
+  return typeof x === 'undefined';
+}
+
 async function putRequest({ req, res, session }: RequestHandler) {
+  console.log('completed');
   const id = getId(req);
 
   const data: { name?: string; description?: string; completed?: boolean } = {};
 
-  if (req.body.name) {
+  if (!isUndefined(req.body.name)) {
     data.name = req.body.name;
   }
 
-  if (req.body.description) {
+  if (!isUndefined(req.body.description)) {
     data.description = req.body.description;
   }
 
-  if (req.body.completed) {
+  if (!isUndefined(req.body.completed)) {
     data.completed = req.body.completed;
   }
 

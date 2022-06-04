@@ -4,9 +4,13 @@ import { Todo } from '@prisma/client';
 
 import { ApiResponse } from '../models';
 
+export const todosKey = {
+  all: 'todos',
+};
+
 export default function useTodos(options = {}) {
   return useQuery<Todo[], Error>(
-    ['todos'],
+    [todosKey.all],
     () => {
       return axios
         .get<ApiResponse<'todos', Todo[]>>('/api/todo')

@@ -8,15 +8,22 @@ import Todo from '../components/Todo';
 import { ProtectedPage } from '../models';
 
 import useTodos from '../query/useTodos';
+import useUpdateTodo from '../mutation/useUpdateTodo';
 
 const Todos = () => {
   const todos = useTodos();
+
+  const updateTodo = useUpdateTodo();
 
   if (todos.data) {
     return todos.data.length ? (
       <>
         {todos.data.map((todo) => (
-          <Todo todo={todo} toggle={(checked) => {}} key={todo.id} />
+          <Todo
+            todo={todo}
+            toggle={(checked) => updateTodo.mutate({ completed: checked, id: todo.id })}
+            key={todo.id}
+          />
         ))}
       </>
     ) : (
